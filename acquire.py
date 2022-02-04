@@ -13,7 +13,7 @@ def get_blog_articles():
     '''
 
     if os.ispath.file('codeup_blog_2022-02-04.json'):    # set up if-conditional to see if json file is available
-        blogs = pd.read_json('codeup_blog_2022-02-04.json', index_col = 0)    # load the json file with pandas if so
+        blogs = pd.read_json('codeup_blog_2022-02-04.json')    # load the json file with pandas if so
     
     else:    # otherwise...
     
@@ -141,7 +141,7 @@ def get_inshorts():
     
     else:    # otherwise...
 
-        categories = ['business', 'sports', 'technology', 'entertainment']    # set list of desired categories
+        categories = ['business', 'sports', 'technology', 'entertainment']    # set a list of desired categories
         inshorts = pd.DataFrame()    # set an empty frame
         for cat in categories:    # commence loop
             df = get_news(cat)    # render dataframe from news article data
