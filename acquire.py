@@ -39,7 +39,7 @@ def get_blog_articles():
 
             article_info = {               # create dictionary
                 'publish_date': date,
-                'article': title,
+                'title': title,
                 'content': content,
                 'link': link
             }
@@ -118,7 +118,7 @@ def get_news(category):
     
         article_info = {'category': category,    # create dictionary from gathered values
                         'publish_date': date,    
-                        'article': headline,
+                        'title': headline,
                         'content': corpus,
                         'author': author,
                        }
