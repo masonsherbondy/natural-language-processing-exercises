@@ -12,7 +12,7 @@ def get_blog_articles():
     This function acquires the blog articles from the Codeup Blog
     '''
 
-    if os.ispath.file('codeup_blog_2022-02-04.json'):    # set up if-conditional to see if json file is available
+    if os.path.isfile('codeup_blog_2022-02-04.json'):    # set up if-conditional to see if json file is available
         blogs = pd.read_json('codeup_blog_2022-02-04.json')    # load the json file with pandas if so
     
     else:    # otherwise...
@@ -136,7 +136,7 @@ def get_inshorts():
     This function loops through the aforementioned categories and scrapes news article info from these pages
     '''
     
-    if os.ispath.file('inshorts_nadir.csv'):    # set up if-conditional to see if a .csv is available
+    if os.path.isfile('inshorts_nadir.csv'):    # set up if-conditional to see if a .csv is available
         inshorts = pd.read_csv('inshorts_nadir.csv', index_col = 0)    # load dataframe if it is
     
     else:    # otherwise...
