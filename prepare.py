@@ -101,16 +101,16 @@ def remove_stopwords(string, extra_words = [], exclude_words = []):
     
     return string_without_stopwords
 
-    # ty AG
-
     
-def prep_articles(df, original, extra_words = [], exclude_words = []):
+# ty AG
+def prep_article_data(df, original, extra_words = [], exclude_words = []):
     
     '''
-    This function takes in a dataframe, original corpus content, a list of extra words to supplement
+    This function takes in a dataframe, the original corpus column, a list of extra words to supplement
     the list of stop words, and a list of words to exclude from the stop words list, and returns the dataframe 
     supplemented with clean, stemmed, and lemmatized columns.
     '''
+    
     # produce 'original' column
     df = df.rename(columns = {original: 'original'})
     
@@ -119,10 +119,16 @@ def prep_articles(df, original, extra_words = [], exclude_words = []):
     .apply(tokenize)\
     .apply(remove_stopwords, extra_words = extra_words, exclude_words = exclude_words)
           
-    # produce 'stemmed' column from cleaned column
-    df['stemmed'] = df.clean.apply(stem)
+    # produce 'stemmed' column
+    df['stemmed'] = df['original'].apply(basic_clean)\
+    .apply(tokenize)\
+    .apply(stem)\
+    .apply(remove_stopwords, extra_words = extra_words, exclude_words = exclude_words)
     
-    # produce 'lemmatizemed' column from cleaned column
-    df['lemmatized'] = df.clean.apply(lemmatize)
+    # produce 'lemmatized' column
+    df['lemmatized'] = df['original'].apply(basic_clean)\
+    .apply(tokenize)\
+    .apply(lemmatize)\
+    .apply(remove_stopwords, extra_words = extra_words, exclude_words = exclude_words)
     
     return df
