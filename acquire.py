@@ -148,3 +148,24 @@ def get_inshorts():
             inshorts = pd.concat([inshorts, df])    # concatenate dataframes
     
     return inshorts
+
+
+# currently broken T_T
+def get_z_inshorts():
+    
+    '''
+    This function loops through the aforementioned categories and scrapes news article info from these pages
+    '''
+    
+    if os.path.isfile('z_inshorts_nadir.csv'):    # set up if-conditional to see if a .csv is available
+        inshorts = pd.read_csv('z_inshorts_nadir.csv', index_col = 0)    # load dataframe if it is
+    
+    else:    # otherwise...
+
+        categories = ['business', 'sports', 'technology', 'entertainment']    # set a list of desired categories
+        inshorts = pd.DataFrame()    # set an empty frame
+        for cat in categories:    # commence loop
+            df = get_news_articles(cat)    # render dataframe from news article data
+            inshorts = pd.concat([inshorts, df])    # concatenate dataframes
+    
+    return inshorts
